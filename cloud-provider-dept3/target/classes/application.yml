@@ -1,0 +1,29 @@
+server:
+  port: 8083
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dept3?useUnicode=true&characterEncoding=utf8&useSSL=false
+
+  application:
+    name: cloud-provider-dept  #服务端的实例名称
+
+#eureka客户端配置
+eureka:
+  client:  #将客户端注册到eureka的服务列表
+    service-url:
+      #单机版 defaultZone: http://localhost:8888/eureka
+      #集群版配置注册服务器地址
+      defaultZone: http://eureka2.com:8889/eureka/,http://eureka1.com:8888/eureka/,http://eureka3.com:8890/eureka/
+  instance:
+    instance-id: cloud-provider-dept8083 #给注册入Eureka的实例
+    prefer-ip-address: true    #访问时给出ip提示
+
+info:
+  app-name: cloud
+  company-name: dhx
+  build.artifactId: cloud-provider-dept3
+  build.version: 0.0.1-SNAPSHOT
